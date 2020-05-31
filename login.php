@@ -64,7 +64,7 @@ if (isset($_POST["submit"])){
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                 </div>
-                <input type="text" name="email" class="form-control" placeholder="Masukkan Email Anda">
+                <input type="text" name="email" class="form-control" placeholder="Masukkan Email Anda" autocomplete="off">
               </div>
             </div>
 
