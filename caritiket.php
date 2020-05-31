@@ -1,6 +1,8 @@
 <?php
 include 'koneksi.php';
-
+if ($_SESSION) {
+    $nama = $_SESSION["nama"];
+}
     $rute = "";
     $dermaga = "";
     if (isset ($_POST['cari'])){
