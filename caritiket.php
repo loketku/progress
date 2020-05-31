@@ -21,7 +21,7 @@ include 'koneksi.php';
         
         <script src="assets/js/jquery-1.11.3.min.js"></script>
        <!-- <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css"/>--> 
-        <link rel="stylesheet" href="assets/css/datepicker.css" type="text/css"/>   
+        <link rel="stylesheet" href="assets/caritiket.css" type="text/css"/>   
         <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/all.min.css">     
        
         <title>Cari Tiket</title>
@@ -31,51 +31,60 @@ include 'koneksi.php';
     <?php include 'layout/navbar.php' ?>
     <div class="container">
         <div class="warna">
-            <h4 class="alert alert-primary text-center">Cari Kapal</h4>
+            <h4 class="alert alert-primary text-center">Booking tiket dengan kapal pilihanmu disini</h4>
         <form action=" " method="POST">
-        <div class="col-md-3">
-            <div class="form-group">
-                <label>Keberangkatan</label>
-                <i class="fa fa-ship"></i>
-                <select name="rute" id = "rute" class="form-control">
-                <option value="-"> -Choose- </option>
-                <option value="Gili Terawangan" <?php if ($rute=="Gili Terawangan"){ echo "selected"; } ?>>Gili Terawangan</option>
-                <option value="Nusa Penida" <?php if ($rute=="Nusa Penida"){ echo "selected"; } ?>>Nusa Penida</option>
-                </select>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Keberangkatan</label>
+                    <i class="fa fa-ship"></i>
+                    <select name="rute" id = "rute" class="form-control">
+                    <option value="-"> -Choose- </option>
+                    <option value="Gili Terawangan" <?php if ($rute=="Gili Terawangan"){ echo "selected"; } ?>>Gili Terawangan</option>
+                    <option value="Nusa Penida" <?php if ($rute=="Nusa Penida"){ echo "selected"; } ?>>Nusa Penida</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Dermaga Tujuan</label>
+                    <i class="fa fa-ship"></i>
+                    <select name="dermaga" id = "dermaga" class="form-control">
+                    <option value="-"> -Choose- </option>
+                    <option value="Sanur Bay" <?php  if ($dermaga == "Sanur Bay"){ echo "selected"; } ?>>Sanur Bay</option>
+                    <option value="Gili Bay" <?php if ($dermaga == "Gili Bay"){ echo "selected"; } ?>>Gili Bay</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Tanggal Keberangkatan</label>
+                    <br><input type="date" name="tgl_pemesanan" id="tgl_pemesanan" class="form-control">
+                </div>
+            </div>
+        
+
+            <script src ="assets/js/bootstrap.js"></script>
+            <script src ="assets/js/bootstrap-datepicker.js"></script>  
+            <script>
+                $( "#tgl_pemesanan").datepicker({
+                    format : 'mm/dd/yyyy',
+                });
+            </script> 
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <button id = "search" name="cari" class="btn alert-info" style="margin-top: 30px;">CARI KAPAL</button>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-3">
-            <div class="form-group">
-                <label>Dermaga Tujuan</label>
-                <i class="fa fa-ship"></i>
-                <select name="dermaga" id = "dermaga" class="form-control">
-                <option value="-"> -Choose- </option>
-                <option value="Sanur Bay" <?php  if ($dermaga == "Sanur Bay"){ echo "selected"; } ?>>Sanur Bay</option>
-                <option value="Gili Bay" <?php if ($dermaga == "Gili Bay"){ echo "selected"; } ?>>Gili Bay</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="form-group">
-                <label>Tanggal Keberangkatan</label>&nbsp;<i class="fa fa-calendar"></i>
-                <br><input type="text" name="tgl_pemesanan" id="tgl_pemesanan" class="form-control">
-            </div>
-        </div>
-        <script src ="assets/js/bootstrap.js"></script>
-        <script src ="assets/js/bootstrap-datepicker.js"></script>  
-        <script>
-            $( "#tgl_pemesanan").datepicker({
-                format : 'dd/mm/yyyy',
-            });
-        </script> 
-
-        <button id = "search" name="cari" class="btn btn-warning" style="margin-top: 8px;">CARI KAPAL</button>
+        
         </form>
-    <table class="table table-striped table-bordered" style="width:100%">
+    <table class="table table-striped table-bordered" style="width:100%;margin-top:20px;">
 		    <thead>
-		        <tr>
+		        <tr class="bg-dark text-white">
 		            <td>No</td>
                     <td>ID Kapal</td>
                     <td>Jenis</td>
