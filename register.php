@@ -39,7 +39,7 @@ if( isset($_POST ["register"]) ) {
           <div class="col-md-10">  
             <div class="form-group">
               <label>Nama</label>
-              <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Anda" required>
+              <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Anda" required  autocomplete="off">
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ if( isset($_POST ["register"]) ) {
           <div class="col-md-10">  
             <div class="form-group">
               <label>Email</label>
-              <input type="text" name="email" class="form-control" placeholder="Masukkkan Email Anda" required>
+              <input type="text" name="email" class="form-control" placeholder="Masukkkan Email Anda" required autocomplete="off">
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@ if( isset($_POST ["register"]) ) {
           <div class="col-md-10">  
             <div class="form-group">
               <label>Alamat</label>
-              <input type="text" name="alamat" class="form-control" placeholder="Masukkkan Alamat Anda" required>
+              <input type="text" name="alamat" class="form-control" placeholder="Masukkkan Alamat Anda" required autocomplete="off">
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ if( isset($_POST ["register"]) ) {
           <div class="col-md-10">  
             <div class="form-group">
               <label>Nomor Seluler</label>
-              <input type="number" name="noTelp" class="form-control" placeholder="Masukkkan Nomor Seluler Anda" required>
+              <input type="number" name="noTelp" class="form-control" placeholder="Masukkkan Nomor Seluler Anda" required autocomplete="off">   
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ if( isset($_POST ["register"]) ) {
           <div class="col-md-10">  
             <div class="form-group">
               <label>Password</label>
-              <input type="password" name="password" class="form-control" placeholder="Masukkkan Password Anda" required>
+              <input type="password" name="password" class="form-control" placeholder="Masukkkan Password Anda" required autocomplete="off">
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ if( isset($_POST ["register"]) ) {
           <div class="col-md-10">  
             <div class="form-group">
               <label>Konfirmasi Password</label>
-              <input type="password" name="konpasswd" class="form-control" placeholder="Konfirmasi Password Anda" required>
+              <input type="password" name="konpasswd" class="form-control" placeholder="Konfirmasi Password Anda" required autocomplete="off">
             </div>
           </div>
         </div>
