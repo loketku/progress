@@ -3,6 +3,7 @@ include 'koneksi.php';
 if ($_SESSION) {
     $nama = $_SESSION["nama"];
 }
+
     $rute = "";
     $dermaga = "";
     if (isset ($_POST['cari'])){
@@ -21,7 +22,7 @@ if ($_SESSION) {
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" >
         <!--<link rel="stylesheet" type="text/css" href="assets/caritiket.css">-->
         
-        <script src="assets/js/jquery-1.11.3.min.js"></script>
+        <!--<script src="assets/js/jquery-1.11.3.min.js"></script>-->
        <!-- <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css"/>--> 
         <link rel="stylesheet" href="assets/caritiket.css" type="text/css"/>   
         <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/all.min.css">     
@@ -29,7 +30,6 @@ if ($_SESSION) {
         <title>Cari Tiket</title>
     </head>
     <body>
-
     <?php include 'layout/navbar.php' ?>
     <div class="container">
         <div class="warna">
@@ -71,9 +71,12 @@ if ($_SESSION) {
             <script src ="assets/js/bootstrap-datepicker.js"></script>  
             <script>
                 $( "#tgl_pemesanan").datepicker({
-                    format : 'mm/dd/yyyy',
+                    format : 'dd/mm/yyyy',
                 });
-            </script> 
+            </script>
+            <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+            <script src="js/jquery.validate.min.js" type="text/javascript"></script>  
+            <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/sunny/jquery-ui.css" type="text/css" rel="stylesheet"/> 
 
             <div class="col-md-3">
                 <div class="form-group">
@@ -87,8 +90,6 @@ if ($_SESSION) {
     <table class="table table-striped table-bordered" style="width:100%;margin-top:20px;">
 		    <thead>
 		        <tr class="bg-dark text-white">
-		            <td>No</td>
-                    <td>ID Kapal</td>
                     <td>Jenis</td>
                     <td>Foto</td>
 		            <td>Waktu</td>
@@ -112,7 +113,6 @@ if ($_SESSION) {
 
                 if ($res1->num_rows > 0){
                     while ($row = $res1->fetch_array()) {
-                       $kapalID = $row ['kapalID'];
                        $jenis = $row ['jenis'];
                        $foto = $row ['foto'];
                        $waktu = $row ['waktu'];
@@ -122,14 +122,13 @@ if ($_SESSION) {
                        $kapasitas = $row ['kapasitas']; 
             ?>
                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $kapalID; ?></td>
+                            <?php $no++; ?>
                             <td><?php echo $jenis; ?></td>
                             <td><?php echo '<img src="data:foto/jpeg; base64,'.base64_encode( $row ['foto'] ).'" width="300" />';?></td>
                             <td><?php echo $waktu; ?></td>
                             <td><?php echo $rute; ?></td>
                             <td><?php echo $nama_dermaga; ?></td>
-                            <td><?php echo $harga; ?></td>
+                            <td>Rp.<?php echo number_format($harga); ?></td>
                             <td><?php echo $kapasitas; ?></td>
                             <td><a href="#" class="btn btn-primary">BOOKING</a></td>
                         </tr>
