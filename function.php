@@ -7,7 +7,7 @@
      $alamat =htmlspecialchars( $data['alamat']);
      $email =htmlspecialchars( $data['email']);
      $noTelp =htmlspecialchars( $data['noTelp']);
-     $password =md5($data['password']);
+     $password =$data['password'];
      $update = "UPDATE user INNER JOIN detailuser ON detailuser.userID = user.userID SET  nama = '$nama',alamat = '$alamat', noTelp = '$noTelp', PASSWORD = '$password' WHERE email = '$email'";
      mysqli_query($koneksi, $update); 
      return mysqli_affected_rows($koneksi);
