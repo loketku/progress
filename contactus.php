@@ -1,3 +1,9 @@
+<?php
+include 'koneksi.php';
+if ($_SESSION) {
+    $nama = $_SESSION["nama"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
