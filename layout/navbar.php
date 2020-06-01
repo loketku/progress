@@ -18,6 +18,13 @@
               <a class="nav-link js-scroll-trigger text-primary" href="register.php">Daftar</a>
             <?php endif ?>
           </li>
+
+          <li class="nav-item">
+          <?php if ($_SESSION) : ?>
+              <a class="nav-link js-scroll-trigger text-primary" href="profil_user.php">My Profil</a>
+            <?php endif ?>
+          </li>
+
           <li class="nav-item">
             <?php if ($_SESSION) : ?>
                 <a class="nav-link js-scroll-trigger text-warning" href="logout.php">Logout</a>
