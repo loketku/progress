@@ -19,8 +19,9 @@
     <br>
     <li><h6 ><a href="dashboard.php" style="color:bisque;"><i class="small material-icons">home</i>&nbsp;&nbsp;HOME</a></h6></li>
     <li><h6 ><a href="data_user.php" style="color: bisque"><i class="small material-icons">event_note</i>&nbsp;DATA USER</a></h6></li>
-    <li><h6 ><a href="#" style="color: bisque"><i class="small material-icons">event_note</i>&nbsp;DATA KAPAL</a></h6></li>
+    <li><h6 ><a href="datakapal.php" style="color: bisque"><i class="small material-icons">event_note</i>&nbsp;DATA KAPAL</a></h6></li>
     <li><h6 ><a href="#" style="color: bisque"><i class="small material-icons">phonelink</i>&nbsp;DATA TRANSAKSI</a></h6></li>
+    <li><h6 ><a href="../logout.php" style="color: bisque"><i class="small material-icons"></i>&nbsp;LOGOUT</a></h6></li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
