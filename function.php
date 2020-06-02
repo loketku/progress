@@ -30,18 +30,46 @@ function cari($keyword){
 
 // FUNCTION-----DATA KAPAL DI ADMIN---///
 function cariKapal($kunci){
-    $query = "SELECT kapalID, jenis, waktu, rute,nama_dermaga,harga,kapasitas,foto FROM kapal WHERE kapalID LIKE '%$kunci%' OR jenis LIKE '%$kunci%' OR waktu LIKE '%$kunci%' OR harga LIKE '%$kunci%' OR kapasitas LIKE '%$kunci%' OR rute LIKE '%$kunci%' OR nama_dermaga LIKE '%$kunci%'";
+    $query = "SELECT kapalID, jenis, waktu, rute,nama_dermaga,harga,kapasitas,jml_tiket,foto FROM kapal WHERE kapalID LIKE '%$kunci%' OR jenis LIKE '%$kunci%' OR waktu LIKE '%$kunci%' OR harga LIKE '%$kunci%' OR kapasitas LIKE '%$kunci%' OR rute LIKE '%$kunci%' OR nama_dermaga LIKE '%$kunci%'";
     return query($query);
 }
-function editKapal ($data){
+
+function editKapal ($upKapal){
     global $koneksi;
-    $kapalID = $data['kapalID'];
-    $jenis = $data['jenis'];
-    $waktu = $data['waktu'];
-    $harga = $data['harga'];
-    $kapasitas =$data['kapasitas'];
-    $update = "UPDATE kapal SET  kapalID = '$kapalID',jenis = '$jenis', waktu = '$waktu','harga'='$harga', kapasitas = '$kapasitas'";
-    mysqli_query($koneksi, $update); 
-    return mysqli_affected_rows($koneksi);
+    $kapalID = $upKapal['kapalID'];
+    $jenis = $upKapal['jenis'];
+    $waktu = $upKapal['waktu'];
+    $rute = $upKapal['rute'];
+    $nama_dermaga = $upKapal['nama_dermaga'];
+    $harga = $upKapal['harga'];
+    $kapasitas = $upKapal['kapasitas'];  
+    $jml_tiket = $upKapal['jml_tiket']; 
+    $foto = $_FILES ['foto']['name'];
+    if($foto != "") {
+        $ekstensi_diperbolehkan = array ('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'); //ekstensi file gambar yang bisa diupload 
+        $x = explode('.', $foto); 
+        $ekstensi = strtolower(end($x));
+        $file_tmp = $_FILES['foto']['tmp_name'];   
+        $angka_acak  = rand(1,999);
+        $fotobaru = $angka_acak.'-'.$foto; 
+              if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
+                      move_uploaded_file($file_tmp,'../foto/'.$fotobaru);
+                        $query = "UPDATE kapal SET jenis = '$jenis', waktu = '$waktu', rute = '$rute', nama_dermaga = '$nama_dermaga', harga = '$harga', kapasitas = '$kapasitas', jml_tiket = '$jml_tiket', foto = '$fotobaru' WHERE kapalID = '$kapalID'";
+                        $result = mysqli_query($koneksi, $query);
+                        if(!$result){
+                            die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
+                                 " - ".mysqli_error($koneksi));
+                        }else {
+                            echo "<script>alert('Data berhasil ditambah.');window.location='datakapal.php';</script>";
+                        }
+            }
+    }
    }
+
+function Hapus ($kapalID){
+    global $koneksi;
+    mysqli_query($koneksi, "DELETE FROM kapal WHERE kapalID = '$kapalID'");
+    return mysqli_affected_rows($koneksi);
+}
+
 ?>

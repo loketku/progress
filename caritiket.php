@@ -97,6 +97,7 @@ if ($_SESSION) {
 		            <td>Nama Dermaga</td>
                     <td>Harga</td>
                     <td>Kapasitas</td>
+                    <td>Tiket Tersedia</td>
                     <td>  </td>
 		        </tr>
             </thead>
@@ -120,16 +121,18 @@ if ($_SESSION) {
                        $nama_dermaga = $row ['nama_dermaga'];
                        $harga = $row ['harga'];
                        $kapasitas = $row ['kapasitas']; 
+                       $tiket = $row ['jml_tiket']; 
             ?>
                        <tr>
                             <?php $no++; ?>
                             <td><?php echo $jenis; ?></td>
-                            <td><?php echo '<img src="data:foto/jpeg; base64,'.base64_encode( $row ['foto'] ).'" width="300" />';?></td>
+                            <td><img src="foto/<?php echo $row ['foto'];?>" width="250"></td>
                             <td><?php echo $waktu; ?></td>
                             <td><?php echo $rute; ?></td>
                             <td><?php echo $nama_dermaga; ?></td>
                             <td>Rp.<?php echo number_format($harga); ?></td>
                             <td><?php echo $kapasitas; ?></td>
+                            <td><?php echo $tiket; ?></td>
                             <td><a href="#" class="btn btn-primary">BOOKING</a></td>
                         </tr>
                        <?php }} else{ ?>
