@@ -33,7 +33,7 @@ if ($_SESSION) {
             <div class="col">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Kontak Kami</li>
                     </ol>
                 </nav>
@@ -50,11 +50,11 @@ if ($_SESSION) {
                         <form>
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Masukkan nama" required>
+                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Masukkan nama" required autocomplete="off">
                             </div>
                             <div class="form-group">
                                 <label for="email">Alamat Email</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Masukkan email" required>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Masukkan email" required autocomplete="off">
                                 <small id="emailHelp" class="form-text text-muted">Kami tidak akan membagikan email anda kepada siapapun.</small>
                             </div>
                             <div class="form-group">

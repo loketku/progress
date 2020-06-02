@@ -49,7 +49,7 @@ if (isset($_POST['edit_user'])) {
         <div class="col-md-10">  
             <div class="form-group">
             <label>Nama</label>
-            <input type="text" name="nama" class="form-control" id="nama" value="<?= $user['nama']; ?> " required>
+            <input type="text" name="nama" class="form-control" id="nama" value="<?= $user['nama']; ?> " required autocomplete="off">
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@ if (isset($_POST['edit_user'])) {
     </div>
 
     <div class="row>">
-        <div class="col-md-10">
+        <div class="col-md-6">
             <div class="form-group">    
             <label>Nomor Seluler</label>
             <input type="number" name="noTelp" class="form-control" id="noTelp" value="<?=$user['noTelp'];?>"required autocomplete="off">

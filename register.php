@@ -4,9 +4,10 @@ require 'registrasi.php';
 if( isset($_POST ["register"]) ) {
 
   if( registrasi($_POST) > 0 ){
-    echo "<script> 
+    /*echo "<script> 
           alert ('user baru berhasil ditambahkan!');
-          </script>";
+          </script>";*/
+          
     header("Location: login.php");
   }else{
     echo mysqli_error($koneksi);
