@@ -34,11 +34,26 @@ if ($_SESSION) {
     <div class="container">
         <div class="warna">
             <h4 class="alert alert-primary text-center">Booking tiket dengan kapal pilihanmu disini</h4>
-        <form action=" " method="POST">
-        <div class="row">
+
+            <form action=" " method="POST">
+
+           
+        <div class="col-md-3">
+               <div class="form-group">
+                <label>Dermaga Keberangkatan</label>
+                  <i class="fa fa-ship"></i>
+                   <select name="dermaga" id = "dermaga" class="form-control">
+                   <option value="-"> -Choose- </option>
+                   <option value="Sanur Bay" <?php  if ($dermaga == "Sanur Bay"){ echo "selected"; } ?>>Sanur Bay</option>
+                   <option value="Gili Bay" <?php if ($dermaga == "Gili Bay"){ echo "selected"; } ?>>Gili Bay</option>
+                   </select>
+               </div>
+          </div>
+
+            <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label>Keberangkatan</label>
+                    <label>Tujuan</label>
                     <i class="fa fa-ship"></i>
                     <select name="rute" id = "rute" class="form-control">
                     <option value="-"> -Choose- </option>
@@ -47,36 +62,14 @@ if ($_SESSION) {
                     </select>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Dermaga Tujuan</label>
-                    <i class="fa fa-ship"></i>
-                    <select name="dermaga" id = "dermaga" class="form-control">
-                    <option value="-"> -Choose- </option>
-                    <option value="Sanur Bay" <?php  if ($dermaga == "Sanur Bay"){ echo "selected"; } ?>>Sanur Bay</option>
-                    <option value="Gili Bay" <?php if ($dermaga == "Gili Bay"){ echo "selected"; } ?>>Gili Bay</option>
-                    </select>
-                </div>
-            </div>
+            
 
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Tanggal Keberangkatan</label>
                     <br><input type="date" name="tgl_pemesanan" id="tgl_pemesanan" class="form-control">
                 </div>
-            </div>
-        
-
-            <script src ="assets/js/bootstrap.js"></script>
-            <script src ="assets/js/bootstrap-datepicker.js"></script>  
-            <script>
-                $( "#tgl_pemesanan").datepicker({
-                    format : 'dd/mm/yyyy',
-                });
-            </script>
-            <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
-            <script src="js/jquery.validate.min.js" type="text/javascript"></script>  
-            <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/sunny/jquery-ui.css" type="text/css" rel="stylesheet"/> 
+            </div> 
 
             <div class="col-md-3">
                 <div class="form-group">
@@ -85,24 +78,11 @@ if ($_SESSION) {
             </div>
         </div>
 
-        
+           
         </form>
-    <table class="table table-striped table-bordered" style="width:100%;margin-top:20px;">
-		    <thead>
-		        <tr class="bg-dark text-white">
-                    <td>Jenis</td>
-                    <td>Foto</td>
-		            <td>Waktu</td>
-		            <td>Rute</td>
-		            <td>Nama Dermaga</td>
-                    <td>Harga</td>
-                    <td>Kapasitas</td>
-                    <td>Tiket Tersedia</td>
-                    <td>  </td>
-		        </tr>
-            </thead>
-            <tbody>
-            <?php
+
+        <div class="row">
+            <?php 
                 $search_rute = '%'. $rute .'%';
                 $search_keyword = '%'. $dermaga .'%';
                 $no = 1;
@@ -113,7 +93,7 @@ if ($_SESSION) {
                 $res1 = $dewan1->get_result();
 
                 if ($res1->num_rows > 0){
-                    while ($row = $res1->fetch_array()) {
+                    while ($row = $res1->fetch_assoc()) {
                        $jenis = $row ['jenis'];
                        $foto = $row ['foto'];
                        $waktu = $row ['waktu'];
@@ -123,28 +103,29 @@ if ($_SESSION) {
                        $kapasitas = $row ['kapasitas']; 
                        $tiket = $row ['jml_tiket']; 
             ?>
-                       <tr>
-                            <?php $no++; ?>
-                            <td><?php echo $jenis; ?></td>
-                            <td><img src="foto/<?php echo $row ['foto'];?>" width="250"></td>
-                            <td><?php echo $waktu; ?></td>
-                            <td><?php echo $rute; ?></td>
-                            <td><?php echo $nama_dermaga; ?></td>
-                            <td>Rp.<?php echo number_format($harga); ?></td>
-                            <td><?php echo $kapasitas; ?></td>
-                            <td><?php echo $tiket; ?></td>
-                            <td><a href="#" class="btn btn-primary">BOOKING</a></td>
-                        </tr>
-                       <?php }} else{ ?>
-                <tr>
-                     <td colspan='7'>Data Tidak Ada</td>
-                 </tr>
-                <?php } ?>
-            
-            </tbody>
-    </table>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="foto/<?php echo $foto;?>" width="260" height="160">
+                        <div class="caption">
+                            <h4><?php echo $jenis; ?></h4>
+                            <h7>Jam berangkat <?php echo $waktu; ?></h7><br>
+                            <h7>Tujuan: <?php echo $rute?></h7><br>
+                            <h7>Dermaga Keberangkatan: <?php echo $nama_dermaga; ?></h7><br>
+                            <h7>Rp. <?php echo number_format($harga);?></h7><br>
+                            <h7>Kapasitas: <?php echo $kapasitas; ?></h7><br>
+                            <h7>Jumlah Tiket Tersedia: <?php echo $tiket; ?></h7><br>
+                            <a href="#" class="btn btn-primary">BOOKING</a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                     </div>
+                </div>
+            <?php }} ?>
+   </div>
     </div>
-    </div>
+
     <?php include 'layout/footer.php';?>
     </body>
 </html>
