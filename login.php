@@ -4,7 +4,8 @@ require 'koneksi.php';
 if (isset($_POST["submit"])){
 
   $email = $_POST["email"];
-  $password = $_POST["password"];
+  $password = mysqli_escape_string($koneksi, $_POST["password"]);
+  $password = md5($password);
 
   $cek = mysqli_query($koneksi, "SELECT nama,email,password,tingkatan_user,alamat,noTelp,jenis_kelamin FROM user LEFT JOIN detailuser USING (userID) WHERE email = '$email'");
 

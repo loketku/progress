@@ -28,7 +28,8 @@ function registrasi($data){
           return false;
       } 
       //enkripsi password 
-    //$passwd = password_hash($passwd, PASSWORD_DEFAULT);
+    //$password = password_hash($password, PASSWORD_DEFAULT);
+      //$password = md5($password);
       
        //tambah ke datbase
       mysqli_query($koneksi,"CALL insert_data ('$email','$password','user','$nama', '$alamat','$noTelp','$jenis_kelamin')");
