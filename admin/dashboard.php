@@ -28,7 +28,7 @@
   <a href="profil_admin.php" class="w3-bar-item w3-button">PROFIL ADMIN</a>
   <a href="data_user.php" class="w3-bar-item w3-button">DATA USER</a>
   <a href="datakapal.php" class="w3-bar-item w3-button">DATA KAPAL</a>
-  <a href="data_transaksi.php" class="w3-bar-item w3-button">DATA TRANSAKSI</a>
+  <a href="databooking.php" class="w3-bar-item w3-button">DATA TRANSAKSI</a>
   <a href="../logout.php" class="w3-bar-item w3-button">LOGOUT</a>
 </div>
 

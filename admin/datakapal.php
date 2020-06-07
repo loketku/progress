@@ -12,6 +12,8 @@ $result = mysqli_query($koneksi, "SELECT * FROM kapal ORDER BY kapalID DESC;");
 if (isset($_POST["cari"])){
     $result = cariKapal($_POST["kunci"]);
 }
+
+//konfigurasi pagination 
 ?>
 <!DOCTYPE html>
 <html lang="en">
