@@ -60,16 +60,41 @@ function editKapal ($upKapal){
                             die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
                                  " - ".mysqli_error($koneksi));
                         }else {
-                            echo "<script>alert('Data berhasil ditambah.');window.location='datakapal.php';</script>";
+                            echo "<script>alert('Data berhasil diubah.');window.location='datakapal.php';</script>";
                         }
             }
+    }else{
+        $query = "UPDATE kapal SET jenis = '$jenis', waktu = '$waktu', rute = '$rute', nama_dermaga = '$nama_dermaga', harga = '$harga', kapasitas = '$kapasitas', jml_tiket = '$jml_tiket' WHERE kapalID = '$kapalID'";
+        $result = mysqli_query($koneksi, $query);
+        if(!$result){
+            die ("Query gagal dijalankan: ".mysqli_error($koneksi).
+                             " - ".mysqli_error($koneksi));
+      } else {
+
+          echo "<script>alert('Data berhasil diubah.');window.location='datakapal.php';</script>";
+      }
+
     }
-   }
+}
 
 function Hapus ($kapalID){
     global $koneksi;
     mysqli_query($koneksi, "DELETE FROM kapal WHERE kapalID = '$kapalID'");
     return mysqli_affected_rows($koneksi);
 }
+
+function updateBooking($data){
+    global $koneksi;
+    $bookingID = htmlspecialchars($data['bookingID']);
+    $tgl_transaksi = htmlspecialchars($data['tgl_transaksi']);
+    $jumlah_tiket =htmlspecialchars( $data['jumlah_tiket']);
+    $harga =htmlspecialchars( $data['harga']);
+    $hargaTot =htmlspecialchars( $data['total_harga']);
+    $bayar =$data['bayar'];
+    $status = $data['status'];
+    $update = "UPDATE detailbooking SET tgl_transaksi = '$tgl_transaksi', jumlah_tiket = '$jumlah_tiket', harga = '$harga', total_harga = '$hargaTot', bayar = '$bayar', status = '$status' WHERE bookingID = '$bookingID'";
+    mysqli_query($koneksi, $update); 
+    return mysqli_affected_rows($koneksi);
+   }
 
 ?>
