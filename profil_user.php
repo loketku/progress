@@ -4,6 +4,7 @@ require 'function.php';
 $email = $_SESSION['email'];
 $nama = $_SESSION['nama'];
 
+
 $query = mysqli_query($koneksi, "SELECT nama, email, alamat,noTelp, jenis_kelamin, password FROM user INNER JOIN detailuser ON detailuser.userID = user.userID WHERE email = '$email'");
 $user = mysqli_fetch_assoc($query);
 

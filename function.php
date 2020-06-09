@@ -85,16 +85,16 @@ function Hapus ($kapalID){
 
 function updateBooking($data){
     global $koneksi;
-    $bookingID = htmlspecialchars($data['bookingID']);
+    $bookingID = htmlspecialchars($data['booking_ID']);
     $tgl_transaksi = htmlspecialchars($data['tgl_transaksi']);
     $jumlah_tiket =htmlspecialchars( $data['jumlah_tiket']);
     $harga =htmlspecialchars( $data['harga']);
-    $hargaTot =htmlspecialchars( $data['total_harga']);
+    $hargaTot =htmlspecialchars( $data['harga_Tot']);
     $bayar =$data['bayar'];
     $status = $data['status'];
-    $update = "UPDATE detailbooking SET tgl_transaksi = '$tgl_transaksi', jumlah_tiket = '$jumlah_tiket', harga = '$harga', total_harga = '$hargaTot', bayar = '$bayar', status = '$status' WHERE bookingID = '$bookingID'";
+    $update = "UPDATE detailbooking LEFT JOIN booking ON detailbooking.booking_ID = booking.bookingID SET tgl_transaksi = '$tgl_transaksi', jumlah_tiket = '$jumlah_tiket', harga = '$harga', harga_Tot = '$hargaTot', bayar = '$bayar', status = '$status' WHERE booking_ID = '$bookingID'";
     mysqli_query($koneksi, $update); 
     return mysqli_affected_rows($koneksi);
-   }
+}
 
 ?>

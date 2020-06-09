@@ -20,12 +20,14 @@ if (isset($_POST["submit"])){
         $_SESSION['login'] = true;
         $_SESSION['email']=$row["email"];
         $_SESSION['nama']=$row ["nama"];
+        $_SESSION['userID']=$row ["userID"];
         $_SESSION['tingkatan_user'] = "admin";
         header("Location:./admin/dashboard.php");
       }elseif($row['tingkatan_user'] == 'user'){
       $_SESSION['login'] = true;
       $_SESSION["email"] = $row["email"];
       $_SESSION["nama"] = $row["nama"];
+      $_SESSION["userID"] = $row["userID"];
       $_SESSION['tingkatan_user'] = "user";
       header("Location: index.php");
     }

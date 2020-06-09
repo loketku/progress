@@ -2,6 +2,8 @@
 include 'koneksi.php';
 if ($_SESSION) {
     $nama = $_SESSION["nama"];
+}else {
+    header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -71,13 +73,13 @@ if ($_SESSION) {
                 <div class="card bg-light mb-3">
                     <div class="card-header bg-success text-white "><i class="fa fa-home"></i> Kontak Kami </div>
                     <div class="card-body">
-                        <p>..... (Admin 1)</p>
-                        <p>+628xxxxxxxxxx</p>
-                        <p>..... (Admin 2)</p>
-                        <p>+628xxxxxxxxxx</p>
+                        <p>Yoga</p>
+                        <p>+628834235423</p>
+                        <p>Mahendra</p>
+                        <p>+628234234432</p>
                         <p>-</p>
                         <p>Email : admin-loketku@gmail.com</p>
-                        <p>Telp Kantor : 0361 xxxxxxx</p>
+                        <p>Telp Kantor : 0361 099234</p>
 
                     </div>
 

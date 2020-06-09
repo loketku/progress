@@ -2,6 +2,7 @@
     include 'koneksi.php';
     if ($_SESSION) {
         $nama = $_SESSION["nama"];
+        
     }
     else 
         header("Location: login.php");

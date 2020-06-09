@@ -3,14 +3,19 @@ include 'koneksi.php';
 if ($_SESSION) {
     $nama = $_SESSION["nama"];
 }
+else {
+    header("Location: login.php");
 
+}
+   
     $rute = "";
     $dermaga = "";
+
     if (isset ($_POST['cari'])){
         $rute = $_POST['rute'];
         $dermaga = $_POST['dermaga'];
     }
-            
+        
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +67,6 @@ if ($_SESSION) {
                     </select>
                 </div>
             </div>
-            
 
             <div class="col-md-3">
                 <div class="form-group">
@@ -71,12 +75,14 @@ if ($_SESSION) {
                 </div>
             </div> 
 
+            
             <div class="col-md-3">
                 <div class="form-group">
                     <button id = "search" name="cari" class="btn alert-info" style="margin-top: 30px;">CARI KAPAL</button>
                 </div>
             </div>
         </div>
+        
 
            
         </form>
@@ -85,8 +91,9 @@ if ($_SESSION) {
             <?php 
                 $search_rute = '%'. $rute .'%';
                 $search_keyword = '%'. $dermaga .'%';
+
                 $no = 1;
-                $query = "SELECT * FROM kapal WHERE rute LIKE ? AND nama_dermaga LIKE ? ";
+                $query = "SELECT * FROM kapal WHERE rute LIKE ? AND nama_dermaga LIKE ?";
                 $dewan1 = $koneksi->prepare($query);
                 $dewan1->bind_param('ss', $search_rute, $search_keyword);
                 $dewan1->execute();
@@ -94,6 +101,7 @@ if ($_SESSION) {
 
                 if ($res1->num_rows > 0){
                     while ($row = $res1->fetch_assoc()) {
+                        $kapalID = $row ['kapalID'];
                        $jenis = $row ['jenis'];
                        $foto = $row ['foto'];
                        $waktu = $row ['waktu'];
@@ -114,7 +122,7 @@ if ($_SESSION) {
                             <h7>Rp. <?php echo number_format($harga);?></h7><br>
                             <h7>Kapasitas: <?php echo $kapasitas; ?></h7><br>
                             <h7>Jumlah Tiket Tersedia: <?php echo $tiket; ?></h7><br>
-                            <a href="#" class="btn btn-primary">BOOKING</a>
+                            <a href="booking.php?id=<?php echo $kapalID;?> " class="btn btn-primary">BOOKING</a>
                             <br>
                             <br>
                             <br>
@@ -122,7 +130,9 @@ if ($_SESSION) {
                         </div>
                      </div>
                 </div>
-            <?php }} ?>
+            <?php }}else {
+                echo "Tiket Perjalanan Anda Tidak Tersedia"; 
+            } ?>
    </div>
     </div>
 
