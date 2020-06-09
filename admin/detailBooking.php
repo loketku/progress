@@ -6,7 +6,7 @@ if ($_SESSION) {
 else 
     header("Location: ../login.php");
 $bookingID = $_GET["bookingID"];
-$data = query("SELECT * FROM detailbooking WHERE bookingID = '$bookingID'")[0];
+$data = query("SELECT `booking_ID`, `tgl_transaksi`, `metodePembayaran`, `jumlah_tiket`, `harga`, `harga_Tot`, `bayar`, `status` FROM detailbooking LEFT JOIN booking ON detailbooking.booking_ID = booking.bookingID WHERE booking_ID = '$bookingID'")[0];
 if (isset($_POST['update'])) {
     if (updateBooking($_POST) > 0){
         echo "
@@ -49,7 +49,7 @@ if (isset($_POST['update'])) {
           <div class="col-md-6">  
             <div class="form-group">
               <label>ID Booking</label>
-              <input type="text" name="bookingID" class="form-control" id="bookingID" required autocomplete="off" readonly value="<?= $data['bookingID']; ?>">
+              <input type="text" name="booking_ID" class="form-control" id="bookingID" required autocomplete="off" readonly value="<?= $data['booking_ID']; ?>">
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ if (isset($_POST['update'])) {
           <div class="col-md-6">  
             <div class="form-group">
               <label>Total Harga</label>
-              <input type="text" name="total_harga" class="form-control" id="total_harga" required autocomplete="off"  value="<?= $data['total_harga']; ?>">
+              <input type="text" name="harga_Tot" class="form-control" id="total_harga" required autocomplete="off"  value="<?= $data['harga_Tot']; ?>">
             </div>
           </div>
         </div>

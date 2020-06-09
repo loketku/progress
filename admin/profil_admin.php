@@ -94,7 +94,7 @@ if (isset($_POST['edit_user'])) {
         <div class="col-md-6">
             <div class="form-group">    
             <label>Password</label>
-            <input type="text" name="password" class="form-control" id="password" value="<?=$user['password'];?>"required autocomplete="off">
+            <input type="password" name="password" class="form-control" id="password" value="<?=$user['password'];?>"required autocomplete="off">
             </div>
         </div>
     </div>

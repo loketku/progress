@@ -5,7 +5,7 @@ if ($_SESSION) {
 }
 else 
     header("Location: ../login.php");
-$result = mysqli_query($koneksi,"SELECT bookingID, kapalID, userID, email, tgl_pemesanan, waktu,rute,nama_dermaga, jumlah, hargaTot, status FROM booking LEFT JOIN detailbooking USING (bookingID) LEFT JOIN USER USING (userID) ORDER BY bookingID ASC;");
+$result = mysqli_query($koneksi,"SELECT bookingID, kapalID, userID, email, tgl_pemesanan, waktu,rute,nama_dermaga, jumlah, hargaTot, status FROM booking LEFT JOIN USER USING (userID) ORDER BY bookingID ASC;");
 ?>
 
 <!DOCTYPE html>
