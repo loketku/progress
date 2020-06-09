@@ -14,21 +14,21 @@ $userID = $diri ['userID'];
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/caritiket.css">
     <title>Riwayat Booking</title>
 </head>
 <body>
 <?php include 'layout/navbar.php' ?>
+<div class="container">
+<div class="warna">
+
+<h5 class="text-center">Riwayat Booking <?php echo $nama ?></h5>
 <br>
-<br>
-<br>
-<br>
-<br>
-<h5>Riwayat Booking <?php echo $nama ?></h5>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -40,21 +40,19 @@ $userID = $diri ['userID'];
             <th>Rute</th>
             <th>Nama Dermaga</th>
             <th>Jumlah Tiket</th>
-            <th>Harga</th>
             <th>Total Harga</th>
             <th>Status</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $ambil = $koneksi->query("SELECT `bookingID`, `kapalID`, `userID`, `tgl_pemesanan`, `waktu`, `rute`, `nama_dermaga`, `jumlah`, `hargaTot`,`status` FROM `booking` WHERE userID = '$userID'");
+        $ambil = $koneksi->query("SELECT `bookingID`, `kapalID`, `tgl_pemesanan`, `waktu`, `rute`, `nama_dermaga`, `jumlah`, `hargaTot`,`status` FROM `booking` WHERE userID = '$userID'");
         $nomor=1;
         while ( $row = $ambil ->fetch_assoc()){?>
         <tr>
             <td><?php echo "$nomor"; ?></td>
             <td><?php echo$row['bookingID']; ?></td>
             <td><?php echo $row['kapalID']; ?></td>
-            <td><?php echo $row['userID']; ?></td>
             <td><?php echo $row['tgl_pemesanan']; ?></td>
             <td><?php echo $row['waktu']; ?></td>
             <td><?php echo $row['rute']; ?></td>
@@ -68,9 +66,6 @@ $userID = $diri ['userID'];
 </table>
     
     &nbsp;&nbsp;&nbsp;<a href="index.php" class="btn btn-primary">Kembali</a></td>
-
-</div>
-</form>
 </div>
 </div>
 <?php include 'layout/footer.php'; ?>

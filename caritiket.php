@@ -42,7 +42,7 @@ else {
 
             <form action=" " method="POST">
 
-           
+         <div class="row">  
         <div class="col-md-3">
                <div class="form-group">
                 <label>Dermaga Keberangkatan</label>
@@ -53,9 +53,8 @@ else {
                    <option value="Gili Bay" <?php if ($dermaga == "Gili Bay"){ echo "selected"; } ?>>Gili Bay</option>
                    </select>
                </div>
-          </div>
-
-            <div class="row">
+               </div>
+          
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Tujuan</label>
@@ -67,13 +66,14 @@ else {
                     </select>
                 </div>
             </div>
+          
 
-            <div class="col-md-3">
+            <!--<div class="col-md-3">
                 <div class="form-group">
                     <label>Tanggal Keberangkatan</label>
                     <br><input type="date" name="tgl_pemesanan" id="tgl_pemesanan" class="form-control">
                 </div>
-            </div> 
+            </div> -->
 
             
             <div class="col-md-3">
@@ -86,6 +86,7 @@ else {
 
            
         </form>
+        <br>
 
         <div class="row">
             <?php 
