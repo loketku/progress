@@ -164,11 +164,10 @@ if (isset($_POST['update'])) {
           </div>
         </div>
 
-        <img src="../foto/<?php echo $data['foto'];?>" width="250">
+        <img src="../foto/<?php echo $data['foto'];?>" width="200">
           <input type="file" name="foto" />
           <br><i style="float: left;font-size: 11px;color: red">Abaikan jika tidak merubah gambar produk</i>
-        </div>
-
+          <br>
         <button type="submit" name="update" class="btn btn-primary" style="margin-top:10px;">Update</button>
         <a href="datakapal.php" class="btn btn-warning" style="margin-top:10px;">Batal</a></td>
         </form> 
